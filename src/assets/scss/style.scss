@@ -16,13 +16,49 @@ $secondary-400 : #33415C;
 $secondary-200 : #979DAC;
 $secondary-100 : #EBECEF;
 
-body {
-    
+// colors
+.primary-500 {
+    color: $primary-500;
+}
+
+.primary-400 {
+    color: $primary-400;
+}
+
+.primary-100 {
+    color: $primary-100;
+}
+
+.primary-50 {
+    color: $primary-50;
 }
 
 .main-search {
     position: relative;
+
+    label.mr-3 {
+        align-self: center;
+    }
+
+    select {
+
+        padding: 2px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+        border-radius: 100px;
+        background-color: $primary-100;
+        border: none;
+    } 
+
+    small{
+        margin-top: 8px;
+        font-weight: 600;
+        color: $secondary-200;
+        font-size: 10px;
+    }
     div{
+
         input[type="text"] {
             border: 2px solid $secondary-200;
             border-radius: 200px;
@@ -57,15 +93,101 @@ body {
     
 }
 
-.btn.btn-primary {
+.btn.btn-primary,
+.btn.btn-primary.rounded {
     background-color: $primary-500;
     box-shadow: none;
     outline: none;
     padding: 5px 14px;
-    border-radius: 100px;
 }
 
+.btn.btn-primary.rounded{
+    border-radius: 100px !important;
+}
+
+.btn.btn-primary{
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 12px 32px;
+}
 
 .btn.btn-primary:hover{
     background-color: $primary-400;
+}
+
+// paddings
+.p-1 {
+    padding: 8px !important;
+}
+
+.p-2 {
+    padding: 16px !important;
+}
+
+
+.p-3 {
+    padding: 24px !important;
+}
+ 
+
+
+// Margins
+.mr-1 {
+    margin-right: 8px;
+}
+
+.mr-2 {
+    margin-right: 16px;
+}
+
+.mr-3 {
+    margin-right: 24px;
+}
+
+// text styles
+
+.link-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.link-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.desc-txt {
+    font-size: 12px;
+}
+
+.image-box {
+    border-radius: 10px;
+    width : 350px;
+    // width: auto;
+    // max-width: 250px;
+    height: auto; //100px
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-box {
+    border-radius: 15px;
+    border: 1px solid $secondary-100;
+    transition: all 200ms ease-in;
+}
+
+.card-box:hover {
+    border-color: $primary-500;
+    background-color: $primary-50;
+    cursor: pointer;
+}
+
+.small-date {
+    text-align: right !important;
+    font-size: 10px;
+    font-weight: 600;
+    color: $secondary-400;
+    margin : 0px;
 }
