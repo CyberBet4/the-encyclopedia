@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+}
+
+// color definitions
+
+$primary-500 : #0466C8;
+$primary-400 : #0353A4;
+$primary-100 : #CDE0F4;
+$primary-50 : #F2F7FC;
+
+$secondary-400 : #33415C;
+$secondary-200 : #979DAC;
+$secondary-100 : #EBECEF;
+
+body {
+    
+}
+
+.main-search {
+    position: relative;
+    div{
+        input[type="text"] {
+            border: 2px solid $secondary-200;
+            border-radius: 200px;
+            outline: none;
+            height: 48px;
+            padding-left: 40px;
+        }
+
+        input[type="text"]:focus{
+            box-shadow: 1px 2px 0px rgba(0,0,0,0.10);
+        }
+
+        input::placeholder{
+            color: $secondary-200;
+        }
+
+        .search-icon, button {
+            font-weight: 600;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            right: 2%;
+            transform: translateY(-50%);
+        }
+
+        .search-icon {
+            left: 3%;
+            color: $secondary-200;
+        }
+    }
+
+    
+}
+
+.btn.btn-primary {
+    background-color: $primary-500;
+    box-shadow: none;
+    outline: none;
+    padding: 5px 14px;
+    border-radius: 100px;
+}
+
+
+.btn.btn-primary:hover{
+    background-color: $primary-400;
+}
