@@ -158,4 +158,9 @@
   margin: 0px;
 }
 
+.neutral-link {
+  text-decoration: none !important;
+  color: #33415C;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,13 +1,14 @@
 import React from 'react'
 import { FiExternalLink } from 'react-icons/fi'
 
-const ResultCards = ({ image, title, desc, date }) => {
+const ResultCards = ({ image, title, desc, date, link }) => {
     return (        
         <div>
             
             <div className="d-flex justify-content-center">
                 {/* card box */}
                 <div className='card-box mb-3 p-2'>
+                <a className='neutral-link' target="_blank" rel="noreferrer" href={`${link}`}>
                     <div className='d-flex justify-content-center'>
                         <div className='image-box mr-2' style={{backgroundImage : `url(${image})`}} ></div>
                         <div>
@@ -28,6 +29,7 @@ const ResultCards = ({ image, title, desc, date }) => {
                         </div>
                     </div>
                     {/* <p className='small-date'>Date: {date}</p> */}
+                    </a>
                 </div>
                 {/* card box has ended */}
             </div>
