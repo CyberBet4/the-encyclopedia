@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import ResultCards from './ResultCards'
-import img01 from '../assets/img/img01.jpg'
-import img02 from '../assets/img/img02.jpg'
+// import { css } from  '@emotion/react'
+// import ClipLoader from 'react-spinners/ClipLoader'
+import BarLoader from 'react-spinners/BarLoader'
 import axios from 'axios'
 
 
 const SearchResult = ({ keyword }) => {
 
-    const [ stat, setStat ] = useState({})
+    const [ stat, setStat ] = useState({ status : false, results : null, loading : false })
     const [ searchInit, setsearchInit ] = useState(false)
     
+
     useEffect(() => {
 
         // get Error function
@@ -34,22 +36,27 @@ const SearchResult = ({ keyword }) => {
                 
                 // console.log(searchInit);
             } catch(err){
-                    console.log(err);
-                    getErrorStatus(err.request.status);
-                    // Hook doesn't work here, it'll just be doing unlimited rendering
+                console.log(err);
+                getErrorStatus(err.request.status);
+                setStat({ 
+                    results : null,
+                    status : false 
+                })
             }
         }
 
         //run axios function when keyword is not empty
         if (keyword !== '') {
+            setsearchInit(true)
             FetchData();
-            setsearchInit(true) 
         }   
     }, [keyword])
 
 
     // display error
-    const displayError = () => <p className="alert text-center alert-danger">Sorry! An error occurred</p>
+    const displayError = () => {
+        return <p className="alert text-center alert-danger">Sorry! An error occurred</p>
+    }
     
     const getDatas = () => {
         // displays the data received
@@ -67,16 +74,33 @@ const SearchResult = ({ keyword }) => {
     }
 
     const displayResult = () => {
-        console.log(searchInit);
-        if(!searchInit){
-            return <>Nothing Yet!</>
+        // let esc = ''
+         if(!searchInit){
+            console.log('nothing');
+            return <>Nothing Yet ! </>
         }
-        else if(stat.status && searchInit){
+        if (stat.results === null && stat.loading === false){
+            console.log('loading');
+            setTimeout(()=> {
+                setStat({ loading : true, status : false })
+            }, 2000)
+            return <div className="d-flex justify-content-center">
+                <BarLoader color={"#0466C8"} height={4} size={40} />          
+            </div>
+        }
+        else if(stat.results === null && stat.status){
+            // if no results found
+            return <>No response from server ! </>
+        }
+        else if(stat.status && searchInit && stat.results != null){
             return getDatas()
-         }else{
+         }
+         else{
             return displayError()
-         }        
-    }
+         }   
+    } 
+
+        console.log(stat.results);
 
     return (
         
@@ -88,6 +112,7 @@ const SearchResult = ({ keyword }) => {
             <div className="d-flex justify-content-center">
                 {/* <button className="btn btn-primary">Load more</button> */}
                 {keyword}
+                {/* <BarLoader color={"#0466C8"} height={4} size={40} /> */}
             </div>
             
         </div>
