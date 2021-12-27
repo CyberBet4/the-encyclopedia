@@ -74,6 +74,7 @@ const SearchResult = ({ keyword }) => {
             
             <div className="d-flex justify-content-center">
                 {/* <button className="btn btn-primary">Load more</button> */}
+                {keyword}
             </div>
             
         </div>

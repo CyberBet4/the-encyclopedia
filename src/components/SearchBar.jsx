@@ -6,9 +6,21 @@ const SearchBar = () => {
 
     const [ keyword, setKeyword ] = useState('')
 
+    const trimmer = (data) => {
+        let str = ''
+        // the trimmer function : It trims the keyword and ensures it's one word
+        for(let i = 0; i <= data.length; i++) {
+            str = data.slice(0, i)
+            if(str.includes(' ')){
+                return str.trim()
+            }
+        }
+    }
+
     const searchKeyword = event => {
         event.preventDefault()
-        setKeyword(event.target[0].value)
+        let data = `${event.target[0].value} `// Space is attached at the end cus the trimmer uses the space check to know the end of the word
+        setKeyword(trimmer(data))
     }
 
     return (
