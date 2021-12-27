@@ -47,6 +47,7 @@
   border-radius: 200px;
   outline: none;
   height: 48px;
+  padding-right: 25%;
   padding-left: 40px;
 }
 .main-search div input[type=text]:focus {
@@ -140,6 +141,7 @@
 
 .card-box {
   border-radius: 15px;
+  width: 450px;
   border: 1px solid #EBECEF;
   transition: all 200ms ease-in;
 }

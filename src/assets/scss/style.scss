@@ -64,6 +64,7 @@ $secondary-100 : #EBECEF;
             border-radius: 200px;
             outline: none;
             height: 48px;
+            padding-right: 25%;
             padding-left: 40px;
         }
 
@@ -174,6 +175,7 @@ $secondary-100 : #EBECEF;
 
 .card-box {
     border-radius: 15px;
+    width: 450px;
     border: 1px solid $secondary-100;
     transition: all 200ms ease-in;
 }

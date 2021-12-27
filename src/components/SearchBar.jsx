@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FiChevronRight, FiSearch } from 'react-icons/fi'
+import SearchResult from '../components/SearchResult'
+
 const SearchBar = () => {
+
+    const [ keyword, setKeyword ] = useState('')
+
+    const searchKeyword = event => {
+        event.preventDefault()
+        setKeyword(event.target[0].value)
+    }
+
     return (
         <div>
             <div  style={{width : 450 }}>
-                <div class="main-search">
-                    <div style={{height : 48, position : 'relative'}}>
-                        <FiSearch className='search-icon' />
-                        <input type="text" class="form-control" placeholder="Search something.." aria-label="Recipient's username" aria-describedby="button-addon2" />
-                        <button className="btn btn-primary rounded" type="button" id="button-addon2">Search <FiChevronRight /> </button>
-                    </div>
+                <div className="main-search">
+                    <form onSubmit={searchKeyword}>
+                        <div style={{height : 48, position : 'relative'}}>
+                            <FiSearch className='search-icon' />
+                            <input type="text" name='keyword' className="form-control" placeholder="Search a word.." />
+                            <button className="btn btn-primary rounded" type="submit" id="button-addon2">Search <FiChevronRight /> </button>
+                        </div>
+                    </form>
                     <small>Processing time: 5ms</small>
                     <div className="d-flex align-content-center justify-content-end">
                         <label className="mr-3" style={{fontSize : 16, cursor : 'pointer'}}>
@@ -21,6 +33,11 @@ const SearchBar = () => {
                             <option value="">Relevant</option>
                         </select>
                     </div>
+                </div>
+
+                <div className="d-flex mt-5 justify-content-center">
+                {/* search result */}
+                    <SearchResult keyword={keyword} />
                 </div>
             </div>
         </div>

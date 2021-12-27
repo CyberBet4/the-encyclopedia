@@ -13,10 +13,10 @@ const HomeSearch = () => {
                     </div>
                 </div>
 
-                <div className="d-flex justify-content-center">
+                {/* <div className="d-flex justify-content-center"> */}
                     {/* Search Result Shows here */}
-                    <SearchResult />
-                </div>
+                    {/* <SearchResult /> */}
+                {/* </div> */}
         </div>
     )
 }
