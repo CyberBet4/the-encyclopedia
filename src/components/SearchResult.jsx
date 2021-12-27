@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ResultCards from './ResultCards'
-// import { css } from  '@emotion/react'
-// import ClipLoader from 'react-spinners/ClipLoader'
+import nothing from '../assets/svg/search-nothing.svg'
 import BarLoader from 'react-spinners/BarLoader'
 import axios from 'axios'
 
@@ -77,7 +76,12 @@ const SearchResult = ({ keyword }) => {
         // let esc = ''
          if(!searchInit){
             console.log('nothing');
-            return <>Nothing Yet ! </>
+            return <div className="d-flex justify-content-center">
+                    <div>
+                        <img src={nothing} alt="nothing here" style={{maxWidth : 150}} />
+                        <p className='search-word' >Search Something !</p>
+                    </div>
+                </div>
         }
         if (stat.results === null && stat.loading === false){
             console.log('loading');
@@ -112,6 +116,7 @@ const SearchResult = ({ keyword }) => {
             <div className="d-flex justify-content-center">
                 {/* <button className="btn btn-primary">Load more</button> */}
                 {keyword}
+                
                 {/* <BarLoader color={"#0466C8"} height={4} size={40} /> */}
             </div>
             

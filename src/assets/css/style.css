@@ -165,4 +165,14 @@
   color: #33415C;
 }
 
+.search-word {
+  color: #33415C;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #EBECEF;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+}
+
 /*# sourceMappingURL=style.css.map */
