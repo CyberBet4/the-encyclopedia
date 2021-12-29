@@ -28,7 +28,7 @@ const SearchBar = () => {
             <div  style={{width : 450 }}>
                 <div className="main-search">
                     <form onSubmit={searchKeyword}>
-                        <div style={{height : 48, position : 'relative'}}>
+                        <div className='animate__animated animate__fadeIn' style={{height : 48, position : 'relative'}}>
                             <FiSearch className='search-icon' />
                             <input type="text" name='keyword' className="form-control" placeholder="Search a word.." />
                             <button className="btn btn-primary rounded" type="submit" id="button-addon2">Search <FiChevronRight /> </button>

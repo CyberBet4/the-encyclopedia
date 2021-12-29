@@ -175,4 +175,16 @@
   font-size: 12px;
 }
 
+.btn.up-btn {
+  background-color: #0466C8 !important;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 15px;
+  padding-bottom: 13px;
+  position: fixed;
+  bottom: 5%;
+  right: 4%;
+}
+
 /*# sourceMappingURL=style.css.map */

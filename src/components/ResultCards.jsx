@@ -7,7 +7,7 @@ const ResultCards = ({ image, title, desc, date, link }) => {
             
             <div className="d-flex justify-content-center">
                 {/* card box */}
-                <div className='card-box mb-3 p-2'>
+                <div className='card-box mb-3 p-2 animate__animated animate__fadeInUp'>
                 <a className='neutral-link' target="_blank" rel="noreferrer" href={`${link}`}>
                     <div className='d-flex justify-content-center'>
                         <div className='image-box mr-2' style={{backgroundImage : `url(${image})`}} ></div>

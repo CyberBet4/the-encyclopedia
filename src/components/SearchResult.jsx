@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import 'animate.css'
 import ResultCards from './ResultCards'
 import nothing from '../assets/svg/search-nothing.svg'
 import BarLoader from 'react-spinners/BarLoader'
+import { FiArrowUp } from 'react-icons/fi'
 import axios from 'axios'
 
 
@@ -9,6 +11,8 @@ const SearchResult = ({ keyword }) => {
 
     const [ stat, setStat ] = useState({ status : false, results : null, loading : false })
     const [ searchInit, setsearchInit ] = useState(false)
+    let [ ScrollPos, setScrollPos ] = useState(window.scrollY) // get screen viewport height
+
     
 
     useEffect(() => {
@@ -24,9 +28,9 @@ const SearchResult = ({ keyword }) => {
         const FetchData = async () => {
             try{
                 // run loader
-                setStat({ status : false, results : null, loading : true }) // I dont know if I should add all the initial properties in the declaration... 
+                setStat({ status : false, results : null, loading : true }) 
 
-                const res = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=375033e55f524d279c9021abdf94f0ed`) //6515b9f031004066b18e05b72c87aee1    
+                const res = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=6515b9f031004066b18e05b72c87aee1`) //6515b9f031004066b18e05b72c87aee1     375033e55f524d279c9021abdf94f0ed
 
                 const datas = res.data.articles
 
@@ -77,7 +81,7 @@ const SearchResult = ({ keyword }) => {
     }
 
     const displayResult = () => {
-        // let esc = ''
+        
          if(!searchInit){
             
             return <div className="d-flex justify-content-center">
@@ -103,10 +107,30 @@ const SearchResult = ({ keyword }) => {
             return displayError()
          }   
     } 
+    
+    // set scroll position value to state
+    useState(() => window.onscroll = () => setScrollPos(window.scrollY))
+
+    const displayUpBtn = () => {
+        // toggle up button function
+        if(ScrollPos >= 123){
+            return(
+                <button onClick={() => window.scrollTo(0, 0)} className='btn up-btn animate__animated animate__fadeInUpBig'>
+                    <FiArrowUp />
+                </button> 
+            )
+        }else {
+            return(
+                <button className='btn up-btn animate__animated animate__fadeOutDownBig'>
+                    <FiArrowUp />
+                </button>
+            )
+        }
+    }
 
     return (
         
-        <div >
+        <div>
             <div style={{width : 450}}>
                 {displayResult()}
             </div>
@@ -115,6 +139,9 @@ const SearchResult = ({ keyword }) => {
                 {/* <button className="btn btn-primary">Load more</button> */}
             </div>
             
+            <div className='up' >
+                {displayUpBtn()}
+            </div>
         </div>
     )
 }
