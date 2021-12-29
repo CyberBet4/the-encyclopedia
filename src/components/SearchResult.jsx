@@ -23,23 +23,27 @@ const SearchResult = ({ keyword }) => {
     
         const FetchData = async () => {
             try{
-                const res = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=375033e55f524d279c9021abdf94f0ed`) //6515b9f031004066b18e05b72c87aee1
+                // run loader
+                setStat({ status : false, results : null, loading : true }) // I dont know if I should add all the initial properties in the declaration... 
+
+                const res = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=375033e55f524d279c9021abdf94f0ed`) //6515b9f031004066b18e05b72c87aee1    
 
                 const datas = res.data.articles
 
                 setStat({
                     errorMessage : '',
                     results : datas,
-                    status : true 
+                    status : true,
+                    loading : false // turn off loader
                 })
                 
-                // console.log(searchInit);
             } catch(err){
-                console.log(err);
+                
                 getErrorStatus(err.request.status);
                 setStat({ 
                     results : null,
-                    status : false 
+                    status : false,
+                    loading : false 
                 })
             }
         }
@@ -75,7 +79,7 @@ const SearchResult = ({ keyword }) => {
     const displayResult = () => {
         // let esc = ''
          if(!searchInit){
-            console.log('nothing');
+            
             return <div className="d-flex justify-content-center">
                     <div>
                         <img src={nothing} alt="nothing here" style={{maxWidth : 150}} />
@@ -83,11 +87,7 @@ const SearchResult = ({ keyword }) => {
                     </div>
                 </div>
         }
-        if (stat.results === null && stat.loading === false){
-            console.log('loading');
-            setTimeout(()=> {
-                setStat({ loading : true, status : false })
-            }, 2000)
+        if (stat.loading === true){
             return <div className="d-flex justify-content-center">
                 <BarLoader color={"#0466C8"} height={4} size={40} />          
             </div>
@@ -96,15 +96,13 @@ const SearchResult = ({ keyword }) => {
             // if no results found
             return <>No response from server ! </>
         }
-        else if(stat.status && searchInit && stat.results != null){
+        else if(stat.status && searchInit && stat.results != null ){
             return getDatas()
          }
          else{
             return displayError()
          }   
     } 
-
-        console.log(stat.results);
 
     return (
         
@@ -115,9 +113,6 @@ const SearchResult = ({ keyword }) => {
             
             <div className="d-flex justify-content-center">
                 {/* <button className="btn btn-primary">Load more</button> */}
-                {keyword}
-                
-                {/* <BarLoader color={"#0466C8"} height={4} size={40} /> */}
             </div>
             
         </div>
